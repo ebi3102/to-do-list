@@ -56,6 +56,8 @@ function add_user_meta($arg){ //$arg is an array
 	foreach ($arg as $meta_key => $meta_value) {
 		$sql = "INSERT INTO user_meta (user_id , meta_key , meta_value ) VALUES ('$user_login' , '$meta_key' , '$meta_value')";
 		$conn->query($sql);
+
+		$conn->close();
 	}
 }
 
