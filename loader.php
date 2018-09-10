@@ -20,15 +20,49 @@ spl_autoload_register(function ($class_name)
 
 $conn = new ConnectionDb($dbConfig['hostname'] , $dbConfig['username'] , $dbConfig['password'] , $dbConfig['db_name']);
 
-//define header and footer
+/**________________________get_header() function ________________________________
+____________________for adding header to a page_______________________________**/
+
 
 function get_header(){
 	include_once 'header.php' ;
 }
 
+/**________________________End of get_header() function__________________________
+______________________________________________________________________________**/
+
+
+
+/**________________________get_footer() function ________________________________
+____________________for adding footer to a page_______________________________**/
+
 function get_footer(){
 	include_once 'footer.php' ;
 }
+/**________________________End of get_footer() function__________________________
+______________________________________________________________________________**/
+
+
+/**_________________________add_user_meta($arg) function _______________________
+____________________Insert data to user_meta table in database_______________**/
+
+
+function add_user_meta($arg){ //$arg is an array
+
+	global $user_login ;
+	global $conn ;
+	$conn = $conn->dbConnection() ;
+
+	foreach ($arg as $meta_key => $meta_value) {
+		$sql = "INSERT INTO user_meta (user_id , meta_key , meta_value ) VALUES ('$user_login' , '$meta_key' , '$meta_value')";
+		$conn->query($sql);
+	}
+}
+
+/**________________________End of add_user_meta() function_______________________
+______________________________________________________________________________**/
+
+
 
 //Pathes
 

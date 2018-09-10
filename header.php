@@ -1,3 +1,7 @@
+<?php 
+global $user_login ;
+global $display_name ;
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,13 +17,17 @@
 	<section>
 		<div class="container">
 			<div class="jumbotron">
-				<h1>Welcome to To-do list Web Application</h1>
-				<p>by To-do list app be able manage your tasks.</p>
-				<?php
-				global $user_login ;
-				global $display_name ;
-				 if($user_login): ?>
-				<p>Welcome <?php echo $display_name; ?></p>
+			<?php if($user_login): ?>
+				<figure>
+					<img src="images/profilepic.jpg" width="250" height="250">
+				</figure>
+			<?php endif ; ?>
+				<div>
+					<h1>Welcome to To-do list Web Application</h1>
+					<p>by To-do list app be able manage your tasks.</p>
+					<?php if($user_login): ?>
+					<p>Welcome <?php echo $display_name; ?></p>
+				</div>
 				<div>
 					<ul>
 						<li><a href="index.php">Home</a></li>
