@@ -48,7 +48,7 @@
 
 		<?php
 			$conn = $conn->dbConnection() ;
-			$sql = "SELECT task_id, user_id, task_description, task_priority , task_date FROM tasks ";
+			$sql = "SELECT * FROM tasks WHERE user_id = $user_login ";
 			$result = $conn->query($sql);
 
 
@@ -70,8 +70,6 @@
 						    // output data of each row
 						    while($row = $result->fetch_assoc()): ?>
 
-						    	<?php if($user_login == $row['user_id']): ?>
-
 						    	<tr>
 						    		<td>				    			
 						    			<input type="checkbox" name="tasksCheck[]" id=' <?php echo $row['task_id'] ?> ' value='<?php echo $row['task_id'] ?>'>
@@ -90,7 +88,7 @@
 						    	</tr>
 
 						    	
-						    	<?php endif; endwhile; ?>
+						    	<?php endwhile; ?>
 
 				</table>
 			<div>
